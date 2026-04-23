@@ -1,0 +1,56 @@
+erDiagram
+    TIME {
+      BIGINT id PK
+      VARCHAR nome UK
+    }
+
+    CURIOSIDADE {
+      BIGINT id PK
+      BIGINT time_id FK
+      VARCHAR texto
+      BOOLEAN ativa
+      BOOLEAN origem_txt
+      TIMESTAMP data_carga
+    }
+
+    HISTORICO_CURIOSIDADE {
+      BIGINT id PK
+      BIGINT curiosidade_id FK
+      TIMESTAMP data_hora_exibicao
+      INTEGER ordem_recencia
+    }
+
+    CURSO {
+      BIGINT id PK
+      VARCHAR nome UK
+      BOOLEAN ativo
+    }
+
+    CANDIDATO {
+      BIGINT id PK
+      BIGINT curso_id FK
+      VARCHAR nome_completo
+      VARCHAR email UK
+      VARCHAR telefone_celular
+      VARCHAR bairro
+      TIMESTAMP data_hora_cadastro
+      BOOLEAN concorda_receber_mensagens
+    }
+
+    TIPO_MENSAGEM {
+      BIGINT id PK
+      VARCHAR descricao UK
+    }
+
+    MENSAGEM {
+      BIGINT id PK
+      BIGINT tipo_mensagem_id FK
+      VARCHAR titulo
+      VARCHAR conteudo
+      TIMESTAMP data_cadastro
+    }
+
+    TIME ||--o{ CURIOSIDADE : possui
+    CURIOSIDADE ||--o{ HISTORICO_CURIOSIDADE : aparece_em
+    CURSO ||--o{ CANDIDATO : escolhido_por
+    TIPO_MENSAGEM ||--o{ MENSAGEM : classifica

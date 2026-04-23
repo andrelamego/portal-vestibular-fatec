@@ -1,0 +1,53 @@
+classDiagram
+
+class Time {
+  Long id
+  String nome
+}
+
+class Curiosidade {
+  Long id
+  String texto
+  Boolean ativa
+  Boolean origemTxt
+  LocalDateTime dataCarga
+}
+
+class HistoricoCuriosidade {
+  Long id
+  LocalDateTime dataHoraExibicao
+  Integer ordemRecencia
+}
+
+class Curso {
+  Long id
+  String nome
+  Boolean ativo
+}
+
+class Candidato {
+  Long id
+  String nomeCompleto
+  String email
+  String telefoneCelular
+  String bairro
+  LocalDateTime dataHoraCadastro
+  Boolean concordaReceberMensagens
+}
+
+class TipoMensagem {
+  Long id
+  String descricao
+}
+
+class Mensagem {
+  Long id
+  String titulo
+  String conteudo
+  LocalDateTime dataCadastro
+}
+
+Time "1" --> "0..*" Curiosidade : possui
+Curiosidade "1" --> "0..*" HistoricoCuriosidade : aparece em
+Curso "1" --> "0..*" Candidato : escolhido por
+TipoMensagem "1" --> "0..*" Mensagem : classifica
