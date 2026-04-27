@@ -23,7 +23,6 @@
             min-height: 100vh;
         }
 
-        /* Sidebar / Navbar admin */
         .navbar-admin {
             background: var(--cinza-escuro);
             padding: 0.9rem 1.5rem;
@@ -51,7 +50,6 @@
             color: var(--amarelo);
         }
 
-        /* Conteúdo principal */
         .main-content {
             max-width: 960px;
             margin: 2rem auto;
@@ -132,7 +130,6 @@
 
         .btn-limpar:hover { border-color: #adb5bd; }
 
-        /* Tabela */
         .tabela-tipos {
             font-size: 0.9rem;
         }
@@ -161,7 +158,6 @@
 
         .btn-editar:hover { background: #dee2e6; }
 
-        /* Consulta simples */
         .resultado-consulta {
             background: #f8f9fa;
             border-radius: 10px;
@@ -182,12 +178,12 @@
 </head>
 <body>
 
-    <%-- Navbar admin --%>
     <nav class="navbar-admin d-flex align-items-center">
         <a href="#" class="brand">⚽ ADMIN FATEC ZL</a>
         <div class="ms-auto">
             <a href="${pageContext.request.contextPath}/admin/cadastraTipo" class="nav-link-admin active">Tipos</a>
             <a href="${pageContext.request.contextPath}/admin/consultaCandidatos" class="nav-link-admin">Candidatos</a>
+            <a href="${pageContext.request.contextPath}/admin/logout" class="nav-link-admin">Sair</a>
             <a href="${pageContext.request.contextPath}/" class="nav-link-admin">← Site</a>
         </div>
     </nav>
@@ -196,7 +192,6 @@
 
         <h1 class="page-title">Gerenciar Tipos de Mensagem</h1>
 
-        <%-- Feedback --%>
         <c:if test="${not empty sucesso}">
             <div class="alert alert-success rounded-3" role="alert">✅ ${sucesso}</div>
         </c:if>
@@ -206,7 +201,6 @@
 
         <div class="row g-4">
 
-            <%-- Formulário Cadastro / Edição --%>
             <div class="col-md-5">
                 <div class="card-admin">
                     <div class="card-header">
@@ -246,7 +240,6 @@
                     </div>
                 </div>
 
-                <%-- Consulta simples por ID --%>
                 <div class="card-admin">
                     <div class="card-header">🔍 Consulta por ID</div>
                     <div class="card-body">
@@ -274,7 +267,6 @@
                 </div>
             </div>
 
-            <%-- Listagem de todos os tipos --%>
             <div class="col-md-7">
                 <div class="card-admin">
                     <div class="card-header">📋 Todos os Tipos</div>

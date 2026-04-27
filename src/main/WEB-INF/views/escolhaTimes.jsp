@@ -87,22 +87,18 @@
             margin: 0;
         }
 
-        /* Corinthians */
         .card-corinthians { background: linear-gradient(135deg, #1c1c1c 0%, #3a3a3a 100%); }
         .card-corinthians .nome-time { color: #ffffff; }
         .card-corinthians:hover { border: 2px solid #ffffff; }
 
-        /* Palmeiras */
         .card-palmeiras { background: linear-gradient(135deg, #006437 0%, #00a859 100%); }
         .card-palmeiras .nome-time { color: #ffffff; }
         .card-palmeiras:hover { border: 2px solid #ffffff; }
 
-        /* Santos */
         .card-santos { background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 100%); }
         .card-santos .nome-time { color: #1c1c1c; }
         .card-santos:hover { border: 2px solid #1c1c1c; }
 
-        /* São Paulo */
         .card-saopaulo { background: linear-gradient(135deg, #c8102e 0%, #1c1c1c 50%, #c8102e 100%); }
         .card-saopaulo .nome-time { color: #ffffff; }
         .card-saopaulo:hover { border: 2px solid #ffffff; }

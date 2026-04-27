@@ -63,7 +63,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Filtros */
         .card-filtros {
             background: #ffffff;
             border: none;
@@ -134,7 +133,6 @@
 
         .btn-buscar:hover { background: #3a3a3a; }
 
-        /* Resultado */
         .card-resultado {
             background: #ffffff;
             border: none;
@@ -206,6 +204,7 @@
         <div class="ms-auto">
             <a href="${pageContext.request.contextPath}/admin/cadastraTipo" class="nav-link-admin">Tipos</a>
             <a href="${pageContext.request.contextPath}/admin/consultaCandidatos" class="nav-link-admin active">Candidatos</a>
+            <a href="${pageContext.request.contextPath}/admin/logout" class="nav-link-admin">Sair</a>
             <a href="${pageContext.request.contextPath}/" class="nav-link-admin">← Site</a>
         </div>
     </nav>
@@ -214,7 +213,6 @@
 
         <h1 class="page-title">Consulta de Candidatos</h1>
 
-        <%-- Filtros rápidos --%>
         <div class="card-filtros">
             <p class="titulo-filtros">🔎 Filtros rápidos</p>
 
@@ -237,7 +235,6 @@
                 </a>
             </div>
 
-            <%-- Filtro por curso --%>
             <div class="d-flex gap-3 flex-wrap">
                 <form action="${pageContext.request.contextPath}/admin/consultaCandidatos" method="get"
                       class="form-inline-filtro">
@@ -254,7 +251,6 @@
                     <button type="submit" class="btn-buscar">Buscar</button>
                 </form>
 
-                <%-- Filtro por bairro --%>
                 <form action="${pageContext.request.contextPath}/admin/consultaCandidatos" method="get"
                       class="form-inline-filtro">
                     <input type="hidden" name="tipo" value="por-bairro">
@@ -265,7 +261,6 @@
             </div>
         </div>
 
-        <%-- Tabela de resultados --%>
         <div class="card-resultado">
             <div class="card-resultado-header">
                 <span>

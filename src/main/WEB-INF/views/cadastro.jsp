@@ -156,7 +156,6 @@
 
         <div class="card-body-form">
 
-            <%-- Mensagens de feedback --%>
             <c:if test="${not empty sucesso}">
                 <div class="alert alert-success alerta-sucesso" role="alert">
                     ✅ ${sucesso}
@@ -241,7 +240,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Máscara simples para telefone
         document.getElementById('telefoneCelular').addEventListener('input', function(e) {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length <= 11) {
@@ -251,7 +249,6 @@
             e.target.value = v;
         });
 
-        // Desabilita botão ao submeter (evita duplo envio)
         document.getElementById('formCadastro').addEventListener('submit', function() {
             const btn = document.getElementById('btnEnviar');
             btn.disabled = true;
