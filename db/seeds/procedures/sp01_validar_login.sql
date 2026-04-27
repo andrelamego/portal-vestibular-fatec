@@ -3,8 +3,6 @@ CREATE PROCEDURE sp_validar_login
     @senha VARCHAR(50)
 AS
 BEGIN
-    SET NOCOUNT ON;
-
     IF @login = 'admin' AND @senha = 'Jej-W+q%'
         SELECT 1 AS valido;
     ELSE

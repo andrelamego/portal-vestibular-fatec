@@ -2,8 +2,6 @@ CREATE PROCEDURE sp_sortear_curiosidade
 @id_time INT
 AS
 BEGIN
-    SET NOCOUNT ON;
-
     DECLARE @id_curiosidade INT;
 
     SELECT TOP 1
