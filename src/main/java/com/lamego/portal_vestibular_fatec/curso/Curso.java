@@ -23,10 +23,9 @@ public class Curso {
     private long id;
 
     private String nome;
+
     private boolean ativo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "candidatos", referencedColumnName = "id_candidato")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "curso")
     private List<Candidato> candidatos = new ArrayList<>();
-
 }

@@ -8,24 +8,25 @@ import org.springframework.cglib.core.Local;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "historicoCuriosidade")
+@Table(name = "historico_curiosidade")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class HistoricoCuriosidade{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_historicoCuriosidade")
+    @Column(name = "id_historico_curiosidade")
     private long id;
 
-    private Integer ordemRecencia;
-    private LocalDateTime dataCarga;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "curiosidades", referencedColumnName = "id_curiosidade")
-    private Curiosidade curiosidade = new Curiosidade();
+    @JoinColumn(name = "id_curiosidade", referencedColumnName = "id_curiosidade")
+    private Curiosidade curiosidade;
 
+    @Column(name = "data_hora_exibicao")
+    private LocalDateTime dataHoraExibicao;
+
+    @Column(name = "ordem_recencia")
+    private Integer ordemRecencia;
 }

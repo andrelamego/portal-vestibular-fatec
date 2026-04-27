@@ -16,7 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Time{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_time")
@@ -24,8 +23,6 @@ public class Time{
 
     private String nome;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "curiosidades", referencedColumnName = "id_curiosidade")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "time")
     private List<Curiosidade> curiosidades = new ArrayList<>();
 }

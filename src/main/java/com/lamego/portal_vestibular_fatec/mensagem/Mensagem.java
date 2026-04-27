@@ -14,17 +14,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Mensagem{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_mensagem")
     private long id;
 
-    private String conteudo;
-    private String titulo;
-    private LocalDateTime dataCadastro;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tipoMensagem", referencedColumnName = "id_tipoMensagem")
+    @JoinColumn(name = "id_tipo_mensagem", referencedColumnName = "id_tipo_mensagem")
     private TipoMensagem tipoMensagem;
+
+    private String titulo;
+
+    private String conteudo;
+
+    @Column(name = "data_cadastro")
+    private LocalDateTime dataCadastro;
 }
