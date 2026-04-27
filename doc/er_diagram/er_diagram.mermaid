@@ -6,7 +6,7 @@ erDiagram
 
     CURIOSIDADE {
       BIGINT id PK
-      BIGINT time_id FK
+      BIGINT id_time FK
       VARCHAR texto
       BOOLEAN ativa
       BOOLEAN origem_txt
@@ -15,7 +15,7 @@ erDiagram
 
     HISTORICO_CURIOSIDADE {
       BIGINT id PK
-      BIGINT curiosidade_id FK
+      BIGINT id_curiosidade FK
       TIMESTAMP data_hora_exibicao
       INTEGER ordem_recencia
     }
@@ -28,7 +28,7 @@ erDiagram
 
     CANDIDATO {
       BIGINT id PK
-      BIGINT curso_id FK
+      BIGINT id_curso FK
       VARCHAR nome_completo
       VARCHAR email UK
       VARCHAR telefone_celular
@@ -44,7 +44,7 @@ erDiagram
 
     MENSAGEM {
       BIGINT id PK
-      BIGINT tipo_mensagem_id FK
+      BIGINT id_tipo_mensagem FK
       VARCHAR titulo
       VARCHAR conteudo
       TIMESTAMP data_cadastro
