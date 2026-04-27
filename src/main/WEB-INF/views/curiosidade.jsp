@@ -47,7 +47,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Badges por time */
         .badge-corinthians  { background: #3a3a3a; color: #ffffff; border: 1px solid #555; }
         .badge-palmeiras    { background: #006437; color: #ffffff; }
         .badge-santos       { background: #ffffff; color: #1c1c1c; }
@@ -132,7 +131,6 @@
 
     <div class="card-curiosidade">
 
-        <%-- Badge do time --%>
         <c:choose>
             <c:when test="${time.nome == 'Corinthians'}">
                 <span class="badge-time badge-corinthians">⚫ ${time.nome}</span>
