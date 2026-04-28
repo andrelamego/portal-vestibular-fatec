@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface CuriosidadeRepository extends JpaRepository<Curiosidade, Long> {
 
-    List<Curiosidade> findByTimeId(Long idTime);
-
     boolean existsByTimeId(Long idTime);
 
     @Query("SELECT c FROM Curiosidade c WHERE c.time.id = :idTime")
