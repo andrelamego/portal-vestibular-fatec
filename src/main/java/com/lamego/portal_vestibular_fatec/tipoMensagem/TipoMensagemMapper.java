@@ -1,16 +1,24 @@
 package com.lamego.portal_vestibular_fatec.tipoMensagem;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
+import org.springframework.stereotype.Component;
 
-@Mapper
-public interface TipoMensagemMapper {
-    TipoMensagemDTO toTipoMensagemDTO(TipoMensagem tipoMensagem);
+@Component
+public class TipoMensagemMapper {
 
-    @Mapping(target = "id", ignore = true)
-    TipoMensagem toEntityFromDto(TipoMensagemDTO dto);
+    public TipoMensagemDTO toDTO(TipoMensagem tipoMensagem) {
+        return new TipoMensagemDTO(
+                tipoMensagem.getId(),
+                tipoMensagem.getDescricao()
+        );
+    }
 
-    @Mapping(target = "id", ignore = true)
-    void updateEntityfromDto(TipoMensagemDTO dto, @MappingTarget TipoMensagem tipoMensagem);
+    public TipoMensagem toEntity(TipoMensagemDTO dto) {
+        TipoMensagem tipoMensagem = new TipoMensagem();
+        tipoMensagem.setDescricao(dto.descricao());
+        return tipoMensagem;
+    }
+
+    public void updateEntity(TipoMensagem tipoMensagem, TipoMensagemDTO dto) {
+        tipoMensagem.setDescricao(dto.descricao());
+    }
 }

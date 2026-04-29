@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.bg-slideshow {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+.bg-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 1;
+}
+
+.bg-slide:nth-child(1) {
+    background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1400&auto=format&fit=crop');
+}
+.bg-slide:nth-child(2) {
+    background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1400&auto=format&fit=crop');
+}
+.bg-slide:nth-child(3) {
+    background-image: url('https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=1400&auto=format&fit=crop');
+}
+.bg-slide:nth-child(4) {
+    background-image: url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1400&auto=format&fit=crop');
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+.content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 16px 48px;
+    background: #2d7a2d;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn:hover {
+    background: #1e5c1e;
+    transform: scale(1.04);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
