@@ -7,7 +7,6 @@ import java.util.List;
 public record CursoDTO(
         Long id,
         String nome,
-        boolean ativo,
-        List<CandidatoDTO> candidatos
+        boolean ativo
 ) {
 }

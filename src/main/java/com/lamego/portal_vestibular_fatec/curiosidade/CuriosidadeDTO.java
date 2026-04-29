@@ -12,7 +12,6 @@ public record CuriosidadeDTO(
         String texto,
         boolean ativa,
         boolean origemTxt,
-        LocalDateTime dataCarga,
-        List<HistoricoCuriosidade> curiosidades
+        LocalDateTime dataCarga
 ) {
 }
