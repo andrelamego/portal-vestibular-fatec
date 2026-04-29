@@ -15,8 +15,6 @@ public class MensagemService {
 
     @Autowired
     private MensagemMapper mapper;
-    @Autowired
-    private DefaultRepositoryTagsProvider repositoryTagsProvider;
 
     public MensagemDTO salvar(MensagemDTO dto) {
         Mensagem salvo = mapper.toEntityFromDto(dto);
