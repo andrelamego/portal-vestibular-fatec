@@ -39,8 +39,9 @@ public class CursoService {
         return mapper.toCursoDTO(curso);
     }
 
-    public Optional<CursoDTO> buscarPorNome(String nome) {
-        return repository.findByNome(nome).map(mapper::toCursoDTO);
+    public CursoDTO buscarPorNome(String nome) {
+        return repository.findByNome(nome).map(mapper::toCursoDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Curso nao encontrado com nome: " + nome));
     }
 
     public List<CursoDTO> listarAtivos() {
