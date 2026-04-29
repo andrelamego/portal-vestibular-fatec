@@ -11,10 +11,10 @@ public record CandidatoDTO(
         Curso curso,
         String nomeCompleto,
 
-        @ValidEmail(required = true, blockedDomains = {"yahoo.com"})
+        @ValidEmail
         String email,
 
-        @ValidPhone(formatted = true)
+        @ValidPhone
         String telefoneCelular,
 
         String bairro,
