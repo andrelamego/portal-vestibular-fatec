@@ -1,4 +1,4 @@
-palmeiras
-corinthians
-sao paulo
-santos
+Corinthians
+Palmeiras
+Santos
+Sao paulo
