@@ -2,6 +2,7 @@ package com.lamego.portal_vestibular_fatec.candidato;
 
 import com.lamego.portal_vestibular_fatec.curso.Curso;
 import com.lamego.portal_vestibular_fatec.curso.CursoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +12,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cadastro")
 public class CandidatoController {
 
-    private final CandidatoService candidatoService;
-    private final CursoService cursoService;
+    @Autowired
+    private CandidatoService candidatoService;
 
-    public CandidatoController(CandidatoService candidatoService, CursoService cursoService) {
-        this.candidatoService = candidatoService;
-        this.cursoService = cursoService;
-    }
+    @Autowired
+    private CursoService cursoService;
 
     @GetMapping
     public String exibirFormulario(Model model) {
