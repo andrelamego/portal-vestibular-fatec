@@ -7,6 +7,7 @@ erDiagram
     CURIOSIDADE {
       BIGINT id PK
       BIGINT id_time FK
+      BIGINT id_tipo_mensagem FK
       VARCHAR texto
       BOOLEAN ativa
       BOOLEAN origem_txt
@@ -42,15 +43,7 @@ erDiagram
       VARCHAR descricao UK
     }
 
-    MENSAGEM {
-      BIGINT id PK
-      BIGINT id_tipo_mensagem FK
-      VARCHAR titulo
-      VARCHAR conteudo
-      TIMESTAMP data_cadastro
-    }
-
     TIME ||--o{ CURIOSIDADE : possui
     CURIOSIDADE ||--o{ HISTORICO_CURIOSIDADE : aparece_em
     CURSO ||--o{ CANDIDATO : escolhido_por
-    TIPO_MENSAGEM ||--o{ MENSAGEM : classifica
+    TIPO_MENSAGEM ||--o{ CURIOSIDADE : classifica

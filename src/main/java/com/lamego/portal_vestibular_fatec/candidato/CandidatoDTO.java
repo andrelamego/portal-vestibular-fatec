@@ -5,6 +5,7 @@ import io.github.andrelamego.brValidator.email.ValidEmail;
 import io.github.andrelamego.brValidator.phone.ValidPhone;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public record CandidatoDTO(
         Long id,
@@ -20,4 +21,12 @@ public record CandidatoDTO(
         String bairro,
         LocalDateTime dataHoraCadastro,
         boolean concordaReceberMensagem
-) {}
+) {
+        public String dataHoraCadastroFormatada() {
+                if(dataHoraCadastro == null) {
+                        return "";
+                }
+
+                return dataHoraCadastro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        }
+}

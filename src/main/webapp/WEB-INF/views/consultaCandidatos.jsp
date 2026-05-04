@@ -202,6 +202,7 @@
     <nav class="navbar-admin d-flex align-items-center">
         <a href="#" class="brand">⚽ ADMIN FATEC ZL</a>
         <div class="ms-auto">
+            <a href="${pageContext.request.contextPath}/admin/curiosidades" class="nav-link-admin">Curiosidades</a>
             <a href="${pageContext.request.contextPath}/admin/cadastraTipo" class="nav-link-admin">Tipos</a>
             <a href="${pageContext.request.contextPath}/admin/consultaCandidatos" class="nav-link-admin active">Candidatos</a>
             <a href="${pageContext.request.contextPath}/admin/logout" class="nav-link-admin">Sair</a>
@@ -313,10 +314,7 @@
                                         <td>${c.telefoneCelular}</td>
                                         <td>${c.bairro}</td>
                                         <td><span class="badge-curso">${c.curso.nome}</span></td>
-                                        <td class="text-muted">
-                                            <fmt:formatDate value="${c.dataHoraCadastro}"
-                                                            pattern="dd/MM/yyyy HH:mm"/>
-                                        </td>
+                                        <td class="text-muted">${c.dataHoraCadastroFormatada()}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

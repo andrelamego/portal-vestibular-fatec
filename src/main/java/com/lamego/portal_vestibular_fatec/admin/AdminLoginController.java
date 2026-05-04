@@ -17,7 +17,7 @@ public class AdminLoginController {
         this.service = service;
     }
 
-    @GetMapping("/admin/login")
+    @GetMapping({"/admin/login", "/admin"})
     public String telaLogin() {
         return "adminLogin";
     }
@@ -29,7 +29,7 @@ public class AdminLoginController {
                              RedirectAttributes redirectAttributes) {
         if (service.validarLogin(login, senha)) {
             session.setAttribute("adminAutenticado", true);
-            return "redirect:/admin/cadastraTipo";
+            return "redirect:/admin/curiosidades";
         }
         redirectAttributes.addFlashAttribute("erro", "Login ou senha inválidos.");
         return "redirect:/admin/login";

@@ -26,7 +26,4 @@ public class HistoricoCuriosidade{
 
     @Column(name = "data_hora_exibicao")
     private LocalDateTime dataHoraExibicao;
-
-    @Column(name = "ordem_recencia")
-    private Integer ordemRecencia;
 }

@@ -2,6 +2,8 @@ package com.lamego.portal_vestibular_fatec.txt;
 
 import com.lamego.portal_vestibular_fatec.curiosidade.Curiosidade;
 import com.lamego.portal_vestibular_fatec.curiosidade.CuriosidadeRepository;
+import com.lamego.portal_vestibular_fatec.curso.Curso;
+import com.lamego.portal_vestibular_fatec.curso.CursoRepository;
 import com.lamego.portal_vestibular_fatec.time.Time;
 import com.lamego.portal_vestibular_fatec.time.TimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,13 +25,30 @@ public class CargaTxtService {
     @Autowired
     private CuriosidadeRepository curiosidadeRepository;
 
+    @Autowired
+    private CursoRepository cursoRepository;
+
+    private static final List<String> NOMES_CURSOS = List.of(
+            "AMS - Análise e Desenvolvimento de Sistemas",
+            "Análise e Desenvolvimento de Sistemas",
+            "Comércio Exterior",
+            "Desenvolvimento de Produtos Plásticos",
+            "Desenvolvimento de Software Multiplataforma",
+            "Gestão de Recursos Humanos",
+            "Gestão Empresarial",
+            "Logística",
+            "Polímeros"
+    );
+
     public void carregarDadosSeNecessario() {
-        if (timeRepository.count() > 0) {
-            return;
+        if(cursoRepository.count() == 0) {
+            carregarCursos();
         }
 
-        carregarTimes();
-        carregarCuriosidades();
+        if (timeRepository.count() == 0) {
+            carregarTimes();
+            carregarCuriosidades();
+        }
     }
 
     private void carregarTimes() {
@@ -71,11 +89,30 @@ public class CargaTxtService {
 
                 curiosidade.setTexto(linha.trim());
                 curiosidade.setTime(time);
+                curiosidade.setAtiva(true);
+                curiosidade.setOrigemTxt(true);
+                curiosidade.setDataCarga(LocalDateTime.now());
 
                 curiosidadeRepository.save(curiosidade);
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao carregar " + nomeArquivo);
         }
+    }
+
+    private void carregarCursos() {
+        List<Curso> cursos = NOMES_CURSOS.stream()
+                .filter(nome -> !cursoRepository.existsByNome(nome))
+                .map(this::criarCursoAtivo)
+                .toList();
+
+        cursoRepository.saveAll(cursos);
+    }
+
+    private Curso criarCursoAtivo(String nome) {
+        Curso curso = new Curso();
+        curso.setNome(nome);
+        curso.setAtivo(true);
+        return curso;
     }
 }
