@@ -2,6 +2,7 @@ package com.lamego.portal_vestibular_fatec.curiosidade;
 
 import com.lamego.portal_vestibular_fatec.historicoCuriosidade.HistoricoCuriosidade;
 import com.lamego.portal_vestibular_fatec.time.Time;
+import com.lamego.portal_vestibular_fatec.tipoMensagem.TipoMensagem;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,10 @@ public class Curiosidade{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_time", referencedColumnName = "id_time")
     private Time time;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_mensagem", referencedColumnName = "id_tipo_mensagem")
+    private TipoMensagem tipoMensagem;
 
     private String texto;
 

@@ -42,12 +42,30 @@ public class CuriosidadeService {
         return mapper.toCuriosidadeDTO(curiosidade);
     }
 
+    public List<CuriosidadeDTO> listarTodos() {
+        return repository.findAll().stream()
+                .map(mapper::toCuriosidadeDTO)
+                .toList();
+    }
+
     public boolean existePorTime(Long idTime) {
         return repository.existsByTimeId(idTime);
     }
 
     public List<CuriosidadeDTO> buscarPorTime(Long idTime) {
         return repository.buscarPorTime(idTime).stream()
+                .map(mapper::toCuriosidadeDTO)
+                .toList();
+    }
+
+    public List<CuriosidadeDTO> buscarPorTipoMensagem(Long idTipoMensagem) {
+        return repository.findByTipoMensagemId(idTipoMensagem).stream()
+                .map(mapper::toCuriosidadeDTO)
+                .toList();
+    }
+
+    public List<CuriosidadeDTO> buscarPorTipoDescricao(String descricao) {
+        return repository.buscarPorTipoDescricao(descricao).stream()
                 .map(mapper::toCuriosidadeDTO)
                 .toList();
     }
