@@ -40,14 +40,7 @@ class TipoMensagem {
   String descricao
 }
 
-class Mensagem {
-  Long id
-  String titulo
-  String conteudo
-  LocalDateTime dataCadastro
-}
-
 Time "1" --> "0..*" Curiosidade : possui
 Curiosidade "1" --> "0..*" HistoricoCuriosidade : aparece em
 Curso "1" --> "0..*" Candidato : escolhido por
-TipoMensagem "1" --> "0..*" Mensagem : classifica
+TipoMensagem "1" --> "0..*" Curiosidade : classifica
