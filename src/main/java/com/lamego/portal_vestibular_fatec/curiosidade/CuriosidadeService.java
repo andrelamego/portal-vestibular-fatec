@@ -1,6 +1,8 @@
 package com.lamego.portal_vestibular_fatec.curiosidade;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class CuriosidadeService {
 
     @Autowired
     private CuriosidadeMapper mapper;
+
+    @Autowired
+    private EntityManager entityManager;
 
     public CuriosidadeDTO salvar(CuriosidadeDTO dto) {
         Curiosidade salvo;
@@ -45,5 +50,21 @@ public class CuriosidadeService {
         return repository.buscarPorTime(idTime).stream()
                 .map(mapper::toCuriosidadeDTO)
                 .toList();
+    }
+
+    public CuriosidadeDTO sortearCuriosiade(Long idTime) {
+        Query query = entityManager.createNativeQuery("EXEC sp_sortear_curiosidade :id_time");
+        query.setParameter("id_time", idTime);
+
+        List<Object[]> resultado = query.getResultList();
+
+        if(resultado.isEmpty()) {
+            return null;
+        }
+
+        Long idCuriosidade = ((Number) resultado.get(0)[0]).longValue();
+        Curiosidade curiosidade = repository.findById(idCuriosidade)
+                .orElseThrow(() -> new EntityNotFoundException("Curiosidade nao encontrado com ID: " + idCuriosidade));
+        return mapper.toCuriosidadeDTO(curiosidade);
     }
 }

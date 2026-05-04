@@ -47,10 +47,10 @@
             margin-bottom: 1.5rem;
         }
 
-        .badge-corinthians  { background: #3a3a3a; color: #ffffff; border: 1px solid #555; }
-        .badge-palmeiras    { background: #006437; color: #ffffff; }
-        .badge-santos       { background: #ffffff; color: #1c1c1c; }
-        .badge-saopaulo     { background: #c8102e; color: #ffffff; }
+        .badge-corinthians { background: #3a3a3a; color: #ffffff; border: 1px solid #555; }
+        .badge-palmeiras { background: #006437; color: #ffffff; }
+        .badge-santos { background: #ffffff; color: #1c1c1c; }
+        .badge-saopaulo { background: #c8102e; color: #ffffff; }
 
         .icone-curiosidade {
             font-size: 3rem;
@@ -119,7 +119,9 @@
             margin-top: 1rem;
         }
 
-        .btn-voltar:hover { color: #adb5bd; }
+        .btn-voltar:hover {
+            color: #adb5bd;
+        }
 
         #contador-texto {
             font-weight: 600;
@@ -129,31 +131,36 @@
 </head>
 <body>
 
-    <div class="card-curiosidade">
+<div class="card-curiosidade">
+    <c:choose>
+        <c:when test="${time.nome == 'Corinthians'}">
+            <span class="badge-time badge-corinthians">${time.nome}</span>
+        </c:when>
+        <c:when test="${time.nome == 'Palmeiras'}">
+            <span class="badge-time badge-palmeiras">${time.nome}</span>
+        </c:when>
+        <c:when test="${time.nome == 'Santos'}">
+            <span class="badge-time badge-santos">${time.nome}</span>
+        </c:when>
+        <c:otherwise>
+            <span class="badge-time badge-saopaulo">${time.nome}</span>
+        </c:otherwise>
+    </c:choose>
 
-        <c:choose>
-            <c:when test="${time.nome == 'Corinthians'}">
-                <span class="badge-time badge-corinthians">⚫ ${time.nome}</span>
-            </c:when>
-            <c:when test="${time.nome == 'Palmeiras'}">
-                <span class="badge-time badge-palmeiras">🟢 ${time.nome}</span>
-            </c:when>
-            <c:when test="${time.nome == 'Santos'}">
-                <span class="badge-time badge-santos">⚪ ${time.nome}</span>
-            </c:when>
-            <c:otherwise>
-                <span class="badge-time badge-saopaulo">🔴 ${time.nome}</span>
-            </c:otherwise>
-        </c:choose>
+    <c:choose>
+        <c:when test="${not empty curiosidade}">
+            <p class="texto-curiosidade">${curiosidade.texto}</p>
+        </c:when>
+        <c:otherwise>
+            <p class="texto-curiosidade">Nao ha curiosidade disponivel para este time no momento. Escolha outro time.</p>
+        </c:otherwise>
+    </c:choose>
 
-        <div class="icone-curiosidade">💡</div>
+    <div class="separador"></div>
 
-        <p class="texto-curiosidade">${curiosidade.texto}</p>
-
-        <div class="separador"></div>
-
+    <c:if test="${not empty curiosidade}">
         <p class="redirect-info">
-            Você será redirecionado em <span id="contador-texto">15</span> segundos
+            Voce sera redirecionado em <span id="contador-texto">15</span> segundos
         </p>
 
         <div class="countdown-bar-wrapper">
@@ -161,16 +168,17 @@
         </div>
 
         <a href="${pageContext.request.contextPath}/cadastro" class="btn-cadastro">
-            Quero me cadastrar agora →
+            Quero me cadastrar agora
         </a>
+    </c:if>
 
-        <a href="${pageContext.request.contextPath}/escolhaTimes" class="btn-voltar">
-            ← Escolher outro time
-        </a>
+    <a href="${pageContext.request.contextPath}/escolhaTimes" class="btn-voltar">
+        ← Escolher outro time
+    </a>
+</div>
 
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<c:if test="${not empty curiosidade}">
     <script>
         const total = 15;
         let restante = total;
@@ -188,5 +196,6 @@
             }
         }, 1000);
     </script>
+</c:if>
 </body>
 </html>

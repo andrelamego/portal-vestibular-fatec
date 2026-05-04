@@ -19,7 +19,7 @@ public class CuriosidadeController {
 
     @GetMapping
     public String exibirCuriosidade(@RequestParam Long timeId, Model model) {
-        model.addAttribute("curiosidades", curiosidadeService.buscarPorTime(timeId));
+        model.addAttribute("curiosidade", curiosidadeService.sortearCuriosiade(timeId));
         model.addAttribute("time", timeService.buscarPorId(timeId));
         return "curiosidade";
     }
