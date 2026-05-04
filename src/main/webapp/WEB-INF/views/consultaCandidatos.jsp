@@ -313,10 +313,7 @@
                                         <td>${c.telefoneCelular}</td>
                                         <td>${c.bairro}</td>
                                         <td><span class="badge-curso">${c.curso.nome}</span></td>
-                                        <td class="text-muted">
-                                            <fmt:formatDate value="${c.dataHoraCadastro}"
-                                                            pattern="dd/MM/yyyy HH:mm"/>
-                                        </td>
+                                        <td class="text-muted">${c.dataHoraCadastroFormatada()}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
