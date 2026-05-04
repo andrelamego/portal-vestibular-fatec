@@ -16,19 +16,9 @@ public class CandidatoService {
     private CandidatoMapper mapper;
 
     public CandidatoDTO salvar(CandidatoDTO dto) {
-        Candidato salvo;
-        if (dto.id() == null) {
-            Candidato novo = mapper.toEntityFromDto(dto);
-            novo.setDataHoraCadastro(LocalDateTime.now());
-            novo.setConcordaReceberMensagens(dto.concordaReceberMensagem());
-            salvo = repository.save(novo);
-        } else {
-            Candidato existente = repository.findById(dto.id())
-                    .orElseThrow(() -> new EntityNotFoundException("Candidato nao encontrado com ID: " + dto.id()));
-            mapper.updateEntityfromDto(dto, existente);
-            existente.setConcordaReceberMensagens(dto.concordaReceberMensagem());
-            salvo = repository.save(existente);
-        }
+        Candidato novo = mapper.toEntityFromDto(dto);
+        novo.setDataHoraCadastro(LocalDateTime.now());
+        Candidato salvo = repository.save(novo);
 
         return mapper.toCandidatoDTO(salvo);
     }

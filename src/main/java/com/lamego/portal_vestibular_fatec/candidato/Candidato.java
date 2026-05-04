@@ -35,8 +35,5 @@ import java.time.LocalDateTime;
 
         @Column(name = "data_hora_cadastro")
         private LocalDateTime dataHoraCadastro;
-
-        @Column(name = "concorda_receber_mensagens")
-        private boolean concordaReceberMensagens;
     }
 
