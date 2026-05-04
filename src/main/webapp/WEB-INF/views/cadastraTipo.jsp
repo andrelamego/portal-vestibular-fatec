@@ -181,6 +181,7 @@
     <nav class="navbar-admin d-flex align-items-center">
         <a href="#" class="brand">⚽ ADMIN FATEC ZL</a>
         <div class="ms-auto">
+            <a href="${pageContext.request.contextPath}/admin/curiosidades" class="nav-link-admin">Curiosidades</a>
             <a href="${pageContext.request.contextPath}/admin/cadastraTipo" class="nav-link-admin active">Tipos</a>
             <a href="${pageContext.request.contextPath}/admin/consultaCandidatos" class="nav-link-admin">Candidatos</a>
             <a href="${pageContext.request.contextPath}/admin/logout" class="nav-link-admin">Sair</a>
@@ -217,18 +218,11 @@
                             </c:if>
 
                             <div class="mb-3">
-                                <label for="nome" class="form-label">Nome do tipo *</label>
-                                <input type="text" class="form-control" id="nome" name="nome"
+                                <label for="descricao" class="form-label">Descricao do tipo *</label>
+                                <input type="text" class="form-control" id="descricao" name="descricao"
                                        placeholder="Ex: Curiosidade, Dica, Fato..."
                                        required maxlength="80"
-                                       value="${tipoEdicao.nome}">
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="descricao" class="form-label">Descrição</label>
-                                <textarea class="form-control" id="descricao" name="descricao"
-                                          rows="3" maxlength="255"
-                                          placeholder="Descrição opcional do tipo">${tipoEdicao.descricao}</textarea>
+                                       value="${tipoEdicao.descricao}">
                             </div>
 
                             <div class="d-flex gap-2">
@@ -253,10 +247,7 @@
                         <c:if test="${not empty tipoConsulta}">
                             <div class="resultado-consulta mt-3">
                                 <span class="badge-id">#${tipoConsulta.id}</span>
-                                <strong class="ms-2">${tipoConsulta.nome}</strong>
-                                <c:if test="${not empty tipoConsulta.descricao}">
-                                    <p class="text-muted mb-0 mt-1" style="font-size:0.85rem;">${tipoConsulta.descricao}</p>
-                                </c:if>
+                                <strong class="ms-2">${tipoConsulta.descricao}</strong>
                             </div>
                         </c:if>
 
@@ -280,7 +271,6 @@
                                     <thead>
                                         <tr>
                                             <th style="width:60px">ID</th>
-                                            <th>Nome</th>
                                             <th>Descrição</th>
                                             <th style="width:80px">Ação</th>
                                         </tr>
@@ -289,7 +279,6 @@
                                         <c:forEach var="tipo" items="${tipos}">
                                             <tr>
                                                 <td><span class="badge-id">#${tipo.id}</span></td>
-                                                <td>${tipo.nome}</td>
                                                 <td class="text-muted">
                                                     <c:choose>
                                                         <c:when test="${not empty tipo.descricao}">${tipo.descricao}</c:when>

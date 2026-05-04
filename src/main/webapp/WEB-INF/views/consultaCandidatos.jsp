@@ -202,6 +202,7 @@
     <nav class="navbar-admin d-flex align-items-center">
         <a href="#" class="brand">⚽ ADMIN FATEC ZL</a>
         <div class="ms-auto">
+            <a href="${pageContext.request.contextPath}/admin/curiosidades" class="nav-link-admin">Curiosidades</a>
             <a href="${pageContext.request.contextPath}/admin/cadastraTipo" class="nav-link-admin">Tipos</a>
             <a href="${pageContext.request.contextPath}/admin/consultaCandidatos" class="nav-link-admin active">Candidatos</a>
             <a href="${pageContext.request.contextPath}/admin/logout" class="nav-link-admin">Sair</a>
