@@ -13,6 +13,7 @@ import org.springframework.util.ResourceUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -40,15 +41,14 @@ public class CargaTxtService {
     );
 
     public void carregarDadosSeNecessario() {
-
-
-        if (timeRepository.count() > 0) {
-            return;
+        if(cursoRepository.count() == 0) {
+            carregarCursos();
         }
 
-        carregarTimes();
-        carregarCuriosidades();
-        carregarCursos();
+        if (timeRepository.count() == 0) {
+            carregarTimes();
+            carregarCuriosidades();
+        }
     }
 
     private void carregarTimes() {
@@ -89,6 +89,9 @@ public class CargaTxtService {
 
                 curiosidade.setTexto(linha.trim());
                 curiosidade.setTime(time);
+                curiosidade.setAtiva(true);
+                curiosidade.setOrigemTxt(true);
+                curiosidade.setDataCarga(LocalDateTime.now());
 
                 curiosidadeRepository.save(curiosidade);
             }
